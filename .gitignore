@@ -1,2 +1,4 @@
-backend/node_modules/
-backend/.env
+Backend/node_modules/
+Backend/.env
+Backend/firebase-service-account*.json
+Backend/*.json.secret
