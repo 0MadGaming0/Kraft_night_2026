@@ -1,240 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-
-    <!-- =========================================
-         BASIC PAGE CONFIGURATION
-         ========================================= -->
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Freight Platform - Phone Verification"
-    >
-
-    <title>Freight Platform</title>
-
-
-    <!-- =========================================
-         STYLESHEET
-         ========================================= -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Load n Go connects suppliers with nearby, available freight drivers.">
+  <title>Load n Go — Match. Move. Deliver.</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase JS SDK (modular CDN) -->
+  <script type="module" src="firebase-init.js"></script>
 </head>
 
-
 <body>
-
-    <!-- =========================================
-         MAIN APPLICATION
-         ========================================= -->
-
-    <main>
-
-        <!-- =====================================
-             STAGE 1
-             AUTHENTICATION SECTION
-             ===================================== -->
-
-        <section id="authentication-section">
-
-
-            <!-- =================================
-                 TITLE
-                 ================================= -->
-
-            <h1>
-                Freight Platform
-            </h1>
-
-            <p>
-                Create your account to continue.
-            </p>
-
-
-            <!-- =================================
-                 USER INFORMATION
-                 ================================= -->
-
-            <div id="user-information">
-
-                <h2>
-                    Get Started
-                </h2>
-
-
-                <!-- =================================
-                     NAME INPUT
-                     ================================= -->
-
-                <div>
-
-                    <label for="name">
-                        Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your name"
-                        autocomplete="name"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- =================================
-                     PHONE NUMBER INPUT
-                     ================================= -->
-
-                <div>
-
-                    <label for="phone">
-                        Phone Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="+919876543210"
-                        autocomplete="tel"
-                        inputmode="tel"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- =================================
-                     SEND OTP BUTTON
-                     ================================= -->
-
-                <button
-                    type="button"
-                    id="send-otp-button"
-                >
-                    Send OTP
-                </button>
-
+  <main>
+    <section id="authScreen" class="page auth-page">
+      <div class="brand-lockup"><span class="brand-mark">L</span><span>Load n Go</span></div>
+      <div class="auth-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">COOPERATIVE FREIGHT NETWORK</p>
+          <h1>Move full.<br><em>Move smart.</em></h1>
+          <p class="lead">The shortest path from a ready load to a nearby, verified truck.</p>
+          <div class="steps">
+            <span><b>01</b> Connect</span><span><b>02</b> Match</span><span><b>03</b> Move</span>
+          </div>
+        </div>
+        <div class="auth-card card">
+          <p class="eyebrow">ACCESS LOAD N GO</p>
+          <div class="role-switch" role="tablist">
+            <button class="role-tab active" data-role="driver" type="button">Driver</button>
+            <button class="role-tab" data-role="supplier" type="button">Supplier</button>
+          </div>
+          <div id="driverAuth">
+            <h2>Driver sign in</h2>
+            <p class="muted">Verify your phone, then share your live location.</p>
+            <label>FULL NAME<input id="driverNameInput" autocomplete="name" placeholder="Arun Kumar"></label>
+            <label>PHONE NUMBER<input id="driverPhoneInput" autocomplete="tel" inputmode="tel"
+                placeholder="+919876543210"></label>
+            <button id="sendOtpButton" class="button primary" type="button">Send OTP <span>→</span></button>
+            <div id="otpPanel" hidden>
+              <label>6-DIGIT OTP<input id="otpInput" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+                  placeholder="123456"></label>
+              <button id="verifyOtpButton" class="button primary" type="button">Verify &amp; continue
+                <span>→</span></button>
             </div>
-
-
-            <!-- =====================================
-                 OTP VERIFICATION SECTION
-                 ===================================== -->
-
-            <div
-                id="otp-verification"
-                hidden
-            >
-
-                <h2>
-                    Verify Your Phone
-                </h2>
-
-
-                <p id="otp-message">
-                    Enter the 6-digit OTP sent to
-                    your phone.
-                </p>
-
-
-                <!-- =================================
-                     OTP INPUT
-                     ================================= -->
-
-                <div>
-
-                    <label for="otp">
-                        6-Digit OTP
-                    </label>
-
-                    <input
-                        type="text"
-                        id="otp"
-                        name="otp"
-                        placeholder="123456"
-                        inputmode="numeric"
-                        autocomplete="one-time-code"
-                        maxlength="6"
-                        pattern="[0-9]{6}"
-                        aria-label="Enter 6-digit OTP"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- =================================
-                     VERIFY OTP BUTTON
-                     ================================= -->
-
-                <button
-                    type="button"
-                    id="verify-otp-button"
-                >
-                    Verify OTP
-                </button>
-
+          </div>
+          <div id="supplierAuth" hidden>
+            <h2>Supplier sign in</h2>
+            <p class="muted">Sign in with your work email. Load n Go stores your data securely in MongoDB.</p>
+            <label>WORK EMAIL<input id="supplierEmailInput" type="email" autocomplete="email"
+                placeholder="you@company.com"></label>
+            <label>PASSWORD<input id="supplierPasswordInput" type="password" autocomplete="current-password"
+                placeholder="••••••••"></label>
+            <button id="supplierLoginButton" class="button primary" type="button">Sign in <span>→</span></button>
+            <button id="showRegisterButton" class="text-button" type="button">New supplier? Create an account</button>
+            <div id="registerPanel" hidden>
+              <label>COMPANY NAME<input id="companyNameInput" autocomplete="organization"
+                  placeholder="ABC Logistics"></label>
+              <button id="registerButton" class="button secondary" type="button">Create supplier account →</button>
             </div>
+            <p id="supplierAuthMode" class="demo-hint">Secured by Firebase Authentication</p>
+          </div>
+          <p id="authNotice" class="notice" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
 
-
-            <!-- =====================================
-                 STATUS MESSAGE
-                 ===================================== -->
-
-            <div
-                id="status-message"
-                role="status"
-                aria-live="polite"
-            ></div>
-
-
-            <!-- =====================================
-                 SUCCESS SECTION
-                 ===================================== -->
-
-            <div
-                id="authentication-success"
-                hidden
-            >
-
-                <h2>
-                    Account Created
-                </h2>
-
-                <p id="welcome-message"></p>
-
+    <section id="driverScreen" class="page app-page" hidden>
+      <header class="topbar">
+        <div class="brand-lockup"><span class="brand-mark">L</span><span>Load n Go</span></div>
+        <div><span class="role-chip">DRIVER</span><button class="logout-button" type="button">Sign out</button></div>
+      </header>
+      <div class="shell">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">DRIVER DASHBOARD</p>
+            <h1>Good to see you, <span id="driverGreeting">Driver</span>.</h1>
+          </div>
+          <p>Keep your availability and location current to receive relevant loads.</p>
+        </div>
+        <div class="dashboard-grid">
+          <article class="card availability-card">
+            <div class="card-top">
+              <div>
+                <p class="eyebrow">STATUS</p>
+                <h3 id="availabilityLabel">Available</h3>
+              </div><label class="toggle"><input id="availabilityToggle" type="checkbox" checked><span></span></label>
             </div>
-
+            <p id="availabilityCopy" class="muted">You can receive nearby load offers.</p>
+          </article>
+          <article class="card location-card">
+            <p class="eyebrow">LIVE LOCATION</p>
+            <div class="location-state"><span id="locationDot" class="dot"></span>
+              <div>
+                <h3 id="locationLabel">Location not shared</h3>
+                <p id="locationDetail" class="muted">Allow GPS so suppliers can find you.</p>
+              </div>
+            </div><button id="shareLocationButton" class="button secondary" type="button">Share my live
+              location</button>
+          </article>
+          <article class="card fleet-card">
+            <p class="eyebrow">YOUR VEHICLE</p>
+            <h3>Mini Truck</h3>
+            <p class="muted">Capacity <b>15,000 kg</b> · verified driver</p>
+          </article>
+        </div>
+        <section class="section-heading">
+          <div>
+            <p class="eyebrow">CURRENT JOBS</p>
+            <h2>Offers waiting for you</h2>
+          </div><button id="refreshDriverButton" class="text-button" type="button">Refresh</button>
         </section>
+        <div id="driverJobs" class="job-stack">
+          <div class="empty-state">No active jobs. Keep your live location and availability on.</div>
+        </div>
+      </div>
+    </section>
 
-    </main>
-
-
-    <!-- =========================================
-         APPLICATION JAVASCRIPT
-         ========================================= -->
-
-    <script
-        type="module"
-        src="app.js"
-    ></script>
-
+    <section id="supplierScreen" class="page app-page" hidden>
+      <header class="topbar">
+        <div class="brand-lockup"><span class="brand-mark">L</span><span>Load n Go</span></div>
+        <div><span class="role-chip">SUPPLIER</span><button class="logout-button" type="button">Sign out</button></div>
+      </header>
+      <div class="shell">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">SUPPLIER DASHBOARD</p>
+            <h1>Post a load. <em>Find a truck.</em></h1>
+          </div>
+          <p id="supplierGreeting">The pickup’s GPS location powers the nearby-driver match.</p>
+        </div>
+        <div class="supplier-layout">
+          <form id="loadForm" class="card load-form">
+            <p class="eyebrow">CREATE LOAD</p>
+            <h2>What needs moving?</h2>
+            <div class="form-grid">
+              <label>GOODS TYPE<input id="goodsType" required placeholder="Electronics"></label>
+              <label>QUANTITY (KG)<input id="quantityKg" type="number" min="1" required placeholder="12000"></label>
+              <label>CURRENCY
+                <select id="currency" aria-label="Currency">
+                  <option value="INR">INR — Indian rupee</option>
+                  <option value="USD">USD — US dollar</option>
+                  <option value="EUR">EUR — Euro</option>
+                </select>
+              </label>
+              <label>LOAD AMOUNT<input id="currencyAmount" type="number" min="1" step="0.01" required
+                  placeholder="50000"></label>
+              <label class="wide">PICKUP LOCATION <button id="pickupLocationButton" class="location-picker"
+                  type="button"><span id="pickupDot" class="dot"></span><span id="pickupLabel">Use current
+                    location</span></button></label>
+              <label>DESTINATION<input id="destination" required placeholder="Kochi"></label>
+              <label>REQUIRED AT<input id="requiredAt" type="datetime-local" required></label>
+            </div>
+            <p id="loadNotice" class="notice"></p>
+            <button class="button primary" type="submit">Create load &amp; find driver <span>→</span></button>
+          </form>
+          <aside id="matchCard" class="card match-card">
+            <p class="eyebrow">NEAREST ELIGIBLE DRIVER</p>
+            <div id="matchEmpty">
+              <div class="match-icon">⌖</div>
+              <h2>Ready when you are.</h2>
+              <p class="muted">Create a load to see the closest available driver with enough capacity.</p>
+            </div>
+            <div id="matchResult" hidden></div>
+          </aside>
+        </div>
+        <section class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR LOADS</p>
+            <h2>Latest activity</h2>
+          </div><button id="refreshSupplierButton" class="text-button" type="button">Refresh</button>
+        </section>
+        <div id="supplierLoads" class="load-list">
+          <div class="empty-state">No loads yet.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
 </body>
 
 </html>

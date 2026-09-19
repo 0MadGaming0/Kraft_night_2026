@@ -1,26 +1,21 @@
-# Kraft  night 2026 — Project Submissions
+# CoLoad MVP
 
-This repository collects every team's project from the hackathon in one verified place.
+CoLoad proves one logistics workflow end to end: a driver shares a live GPS location, a supplier creates a load, the system selects the closest available driver with sufficient capacity, and the driver accepts or rejects the offer.
 
-## How to submit your project
+## Run it
 
-1. **Fork** this repository (button top-right on GitHub).
-2. **Clone** your fork locally:
-3. **Copy the template folder** and rename it to your team name:
-4. **Fill in** `submissions/team-<your-team-name>/README.md` with your project details.
-5. **Add media**: put screenshots/photos inside the `photos/` folder, and add a link to your demo video (YouTube/Drive, unlisted is fine) in the README.
-6. **Commit and push** to your fork:
- git add .
-git commit -m "Add submission: Team <your-team-name>"
-git push origin main
-7. **Open a Pull Request** back to this repository. Fill in the PR checklist that appears automatically.
+1. In `Backend`, copy `.env.example` to `.env` and add `MONGODB_URI` when MongoDB is available.
+2. Run `npm start` from `Backend`.
+3. Open `http://localhost:5000`.
 
-## Rules
+Without MongoDB, the app uses a self-contained in-memory demo store so the full workflow remains demonstrable. MongoDB mode creates the `drivers.currentLocation` `2dsphere` index and uses `$geoNear` for matching.
 
-- Only add/edit files inside **your own** `submissions/team-<your-team-name>/` folder. PRs that touch other teams' folders will not be merged.
-- Use the exact template structure — it's what makes review fast and fair for everyone.
-- One PR per team. If you need to fix something, push more commits to the same branch — don't open a new PR.
+## Demo flow
 
-## Verification
+1. Sign in as a driver using any valid-format phone number. In demo mode, the OTP is `123456`.
+2. On the driver dashboard, share location (or use the automatic Kollam demo-location fallback).
+3. Sign out and sign in as the supplier: `supplier@coload.demo` / `123456`.
+4. Use the pickup-location button, create a load, and send the recommended driver an offer.
+5. Return to the driver account and accept it. Both roles will show the assigned state.
 
-Organizers review each PR against the checklist and merge it once everything is complete. Your submission is officially counted once it's merged into `main`.
+For a live demo, use a second browser profile for the driver and supplier dashboards. The backend session is intentionally lightweight for the hackathon MVP. Use Firebase-issued tokens and password hashing before any production deployment.
