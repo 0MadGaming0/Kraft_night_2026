@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         BASIC PAGE CONFIGURATION
+         ========================================= -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Freight Platform - Phone Verification"
+    >
+
+    <title>Freight Platform</title>
+
+
+    <!-- =========================================
+         STYLESHEET
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         MAIN APPLICATION
+         ========================================= -->
+
+    <main>
+
+        <!-- =====================================
+             STAGE 1
+             AUTHENTICATION SECTION
+             ===================================== -->
+
+        <section id="authentication-section">
+
+
+            <!-- =================================
+                 TITLE
+                 ================================= -->
+
+            <h1>
+                Freight Platform
+            </h1>
+
+            <p>
+                Create your account to continue.
+            </p>
+
+
+            <!-- =================================
+                 USER INFORMATION
+                 ================================= -->
+
+            <div id="user-information">
+
+                <h2>
+                    Get Started
+                </h2>
+
+
+                <!-- =================================
+                     NAME INPUT
+                     ================================= -->
+
+                <div>
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =================================
+                     PHONE NUMBER INPUT
+                     ================================= -->
+
+                <div>
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+919876543210"
+                        autocomplete="tel"
+                        inputmode="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =================================
+                     SEND OTP BUTTON
+                     ================================= -->
+
+                <button
+                    type="button"
+                    id="send-otp-button"
+                >
+                    Send OTP
+                </button>
+
+            </div>
+
+
+            <!-- =====================================
+                 OTP VERIFICATION SECTION
+                 ===================================== -->
+
+            <div
+                id="otp-verification"
+                hidden
+            >
+
+                <h2>
+                    Verify Your Phone
+                </h2>
+
+
+                <p id="otp-message">
+                    Enter the 6-digit OTP sent to
+                    your phone.
+                </p>
+
+
+                <!-- =================================
+                     OTP INPUT
+                     ================================= -->
+
+                <div>
+
+                    <label for="otp">
+                        6-Digit OTP
+                    </label>
+
+                    <input
+                        type="text"
+                        id="otp"
+                        name="otp"
+                        placeholder="123456"
+                        inputmode="numeric"
+                        autocomplete="one-time-code"
+                        maxlength="6"
+                        pattern="[0-9]{6}"
+                        aria-label="Enter 6-digit OTP"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- =================================
+                     VERIFY OTP BUTTON
+                     ================================= -->
+
+                <button
+                    type="button"
+                    id="verify-otp-button"
+                >
+                    Verify OTP
+                </button>
+
+            </div>
+
+
+            <!-- =====================================
+                 STATUS MESSAGE
+                 ===================================== -->
+
+            <div
+                id="status-message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- =====================================
+                 SUCCESS SECTION
+                 ===================================== -->
+
+            <div
+                id="authentication-success"
+                hidden
+            >
+
+                <h2>
+                    Account Created
+                </h2>
+
+                <p id="welcome-message"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         APPLICATION JAVASCRIPT
+         ========================================= -->
+
+    <script
+        type="module"
+        src="app.js"
+    ></script>
+
+</body>
+
+</html>

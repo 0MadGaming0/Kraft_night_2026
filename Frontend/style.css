@@ -1,0 +1,300 @@
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    background: #f4f6f8;
+
+    color: #1f2937;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+main {
+    width: 100%;
+    max-width: 420px;
+}
+
+
+/* =========================================
+   AUTHENTICATION CARD
+   ========================================= */
+
+#authentication-section {
+    background: #ffffff;
+
+    padding: 32px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e5e7eb;
+}
+
+
+/* =========================================
+   HEADINGS
+   ========================================= */
+
+h1 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+
+    color: #111827;
+}
+
+
+h2 {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    color: #111827;
+}
+
+
+#authentication-section > p {
+    color: #6b7280;
+
+    margin-bottom: 30px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   USER INFORMATION
+   ========================================= */
+
+#user-information {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   FORM GROUPS
+   ========================================= */
+
+#user-information > div,
+#otp-verification > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+label {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button {
+    width: 100%;
+
+    padding: 13px 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+
+button:hover {
+    background: #1d4ed8;
+}
+
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+button:disabled {
+    background: #9ca3af;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   OTP VERIFICATION
+   ========================================= */
+
+#otp-verification {
+    margin-top: 10px;
+}
+
+
+#otp-message {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   STATUS MESSAGE
+   ========================================= */
+
+#status-message {
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #4b5563;
+
+    min-height: 20px;
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+   ========================================= */
+
+#authentication-success {
+    margin-top: 20px;
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+#authentication-success h2 {
+    margin-bottom: 8px;
+
+    color: #166534;
+}
+
+
+#welcome-message {
+    color: #166534;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    #authentication-section {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+}
