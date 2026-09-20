@@ -15,7 +15,7 @@ Load n Go bridges the gap between suppliers and truck drivers by offering intell
 
 ## Tech Stack
 * **Frontend:** HTML5, Vanilla CSS3 (Glassmorphism UI), JavaScript (ES6+), Firebase SDK v10 (Auth & Storage)
-* **Backend:** Node.js, Express.js REST API
+* **Backend:** Firebase, Mongo DB
 * **Database & Geospatial:** MongoDB Native Driver (with `2dsphere` spatial indexing & `$geoNear` aggregation) / In-Memory Demo Fallback
 * **Authentication:** Firebase Auth (Supplier) & 2Factor SMS OTP (Driver)
 * **Storage:** Firebase Cloud Storage (Transport Document Storage)
