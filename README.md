@@ -5,9 +5,9 @@
 | Name            | Email                                                                 | GitHub                                        |
 | --------------- | --------------------------------------------------------------------- | --------------------------------------------- |
 | Madhav S Pillai | [madhavsp05@gmail.com](mailto:madhavsp05@gmail.com)                   | [0MadGaming0](https://github.com/0MadGaming0) |
-| Allan Varghese  | [allanvarghese2004@gmail.com](mailto:allanvarghese2004@gmail.com)     |                                               |
-| Sreenandana     | [sreenandanaanil2004@gmail.com](mailto:sreenandanaanil2004@gmail.com) |                                               |
-
+| Allan Varghese  | [allanvarghese2004@gmail.com](mailto:allanvarghese2004@gmail.com)     | https://github.com/techmania-art/Allan.git  |
+| Maanas T Manoj    | maanastmanoj7@gmail.com                                             | https://github.com/maanastmanoj100          |
+| Sanoj Koshy  | sanojkoshy707@gmail.com                                                  | https://github.com/sanojkoshy               |
 ## Project Name
 
 **Load n Go (CoLoad)**
