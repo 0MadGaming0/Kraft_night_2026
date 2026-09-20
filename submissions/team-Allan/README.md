@@ -1,4 +1,4 @@
-# Team Name: Allan
+# Team Name: Infinite loop
 
 ## Members
 | Name | Email | GitHub |
