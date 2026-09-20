@@ -8,7 +8,7 @@
 | Sreenandana | sreenandanaanil2004@gmail.com | |
 
 ## Project Name
-**Load n Go (CoLoad)**
+**Load N Go**
 
 ## Goal / Problem Statement
 Load n Go bridges the gap between suppliers and truck drivers by offering intelligent, real-time geospatial matching, document verification safety gating, and AI-driven cargo compliance insights. It solves logistics safety and vehicle capacity underutilization by ensuring only verified, compliant loads are matched with eligible drivers in real time.
@@ -51,7 +51,7 @@ flowchart TD
 ---
 
 ## Demo Video
-*(Add your demo video link here)*
+(https://drive.google.com/file/d/1M46OGMkDOjxrj4yvtiU3Jl7ERNojUwwV/view?usp=sharing)
 
 ## Screenshots
 See the `photos/` folder in this directory for working screenshots/photos of the project.
